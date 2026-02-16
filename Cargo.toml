@@ -1,0 +1,28 @@
+[package]
+name = "jsonschema-to-protobuf"
+version = "0.1.0"
+edition = "2021"
+description = "Convert JSON Schema to Protocol Buffer definitions"
+license = "MIT"
+
+[lib]
+name = "jsonschema_to_protobuf"
+path = "src/lib.rs"
+
+[[bin]]
+name = "jsonschema-to-proto"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+thiserror = "1"
+
+[dev-dependencies]
+pretty_assertions = "1"
+criterion = "0.5"
+
+[[bench]]
+name = "conversion"
+harness = false

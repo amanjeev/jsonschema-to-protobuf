@@ -1,0 +1,51 @@
+{
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique user identifier"
+    },
+    "username": {
+      "type": "string",
+      "description": "User's login name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["admin", "user", "guest"]
+      }
+    },
+    "profile": {
+      "type": "object",
+      "title": "Profile",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["id", "username", "email"]
+}

@@ -1,0 +1,77 @@
+{
+  "title": "ApiResponse",
+  "type": "object",
+  "definitions": {
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["code", "message"]
+    },
+    "Pagination": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer"
+        },
+        "perPage": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "data": {
+      "oneOf": [
+        { "$ref": "#/definitions/User" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/definitions/User" }
+        }
+      ]
+    },
+    "error": {
+      "$ref": "#/definitions/Error"
+    },
+    "pagination": {
+      "$ref": "#/definitions/Pagination"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["success"]
+}
